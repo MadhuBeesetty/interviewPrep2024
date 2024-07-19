@@ -43,7 +43,7 @@ console.log(productExceptSelf([-1, 1, 0, -3, 3]));
 
 // sol 2
 
-const productExceptSelf = (nums) => {
+const productExceptSelf1 = (nums) => {
   let ans = [],
     i = 0,
     x,
@@ -69,3 +69,5 @@ const productExceptSelf = (nums) => {
   }
   return ans;
 };
+
+console.log(productExceptSelf1([-1, 1, 0, -3, 3]));
