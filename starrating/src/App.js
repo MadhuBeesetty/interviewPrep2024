@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import SocialSurvery from './checkbox';
 
 const StarContainer = styled.div`
   display: flex;
@@ -47,6 +48,7 @@ const Rating = () => {
           *
         </Star>
       ))}
+      <SocialSurvery />
     </StarContainer>
   );
 };
