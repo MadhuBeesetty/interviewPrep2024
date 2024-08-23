@@ -18,37 +18,40 @@ return new Promise(resolve => {
 
 // For the purposes of this exercise, we do want to mutate
 // the db when adding a new network
-const addNetwork = (data) => {
-return new Promise(resolve => {
-  setTimeout(() => {
-    networks = data;
-    resolve([...networks]);
-  }, 2000)
-});
-};
+// const addNetwork = (data) => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       networks = data;
+//       resolve([...networks]);
+//     }, 2000)
+//   });
+// };
 
 const SocialSurvery = () => {
 const [items, setItems] = useState([]);
 useEffect(() => {
   const data = fetchData();
-  setItems();
+  data.then((value) => setItems(value))
 }, []);
 
-// const handleSubmit = () =>  {
-//   console.log('Submitted!', items);
-// }
+const handleSubmit = () =>  {
+  console.log('Submitted!', items);
+}
 
-// const handleAdd = () => {
-//   const value = document.getElementById('network');
+const handleAdd = () => {
+  const value = document.getElementById('network');
 
-//   const data = addNetwork(value);
-//   setItems([]);
-// }
+  // const data = addNetwork(value);
+  setItems([]);
+}
 
-// const handleOnChange = () => {
-//   // TODO 1: Implement
-// };
+const handleOnChange = (index) => {
+  let iteamsCopy = [...items];
+  iteamsCopy[index]["done"] = !iteamsCopy[index]["done"]
+  setItems(iteamsCopy);
+};
 
+console.log(items, "this is state data");
 // TODO 2: Implement loading element
 return (
   <div>
@@ -57,17 +60,17 @@ return (
       {items.map((item, index) => (
         <li key={item.id}>
           <label>
-            <input type="checkbox" disabled readOnly checked={item.done} onChange={this.handleOnChange} />
+            <input type="checkbox" checked={item.done} onChange={() => handleOnChange(index)} />
             <span>{item.text}</span>
           </label>
         </li>
       ))}
     </ol>
-    <button onClick={this.handleSubmit}>Submit</button>
+    <button onClick={() => handleSubmit}>Submit</button>
     <br/>
     <h2>Add network:</h2>
     <input id="network"/>
-    <button onClick={this.handleAdd}>Add</button>
+    <button onClick={() => handleAdd}>Add</button>
   </div>
 )
 }
