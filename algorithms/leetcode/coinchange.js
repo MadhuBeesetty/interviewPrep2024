@@ -9,18 +9,22 @@
 // Explanation: 11 = 5 + 5 + 1
 
 const coinChange = (coins, amount) => {
-    let output = 0;
-    let remainingAmount = amount
-    for(var i = coins.length - 1; i > 0; i--){
-        if(remainingAmount === 0) return output;
-            while (coins[i] < remainingAmount) {
-              output = output + 1;
-              remainingAmount = remainingAmount - coins[i];
-              console.log(remainingAmount);
-            }
+  let output = 0;
+    const calculatingCoins = (coins, amount, output, i) => {
+      if(i === -1 || amount === 0) {
+        return output;
+      }
+      if(amount >= coins[i]){
+        // console.log(i, amount, output, "thgis is inside");
+        output = output + 1
+        amount = amount - coins[i];
+        // console.log(i, amount, output, coins[i], "thgis is outside");
+        return calculatingCoins(coins, amount, output, i);
+      }else{
+        return calculatingCoins(coins, amount, output, i - 1);
+      }
     }
-    if(remainingAmount > 0) return -1;
-    return output;
-}
-
+  return calculatingCoins(coins, amount, output, i = coins.length - 1);
+} 
 console.log(coinChange([1, 2, 5], 11));
+console.log(coinChange([1, 2], 10));
