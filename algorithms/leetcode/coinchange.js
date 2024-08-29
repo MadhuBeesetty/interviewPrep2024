@@ -25,5 +25,5 @@ const coinChange = (coins, amount) => {
     }
   return calculatingCoins(coins, amount, output, i = coins.length - 1);
 } 
-// console.log(coinChange([1, 2, 5], 11));
+console.log(coinChange([1, 2, 5], 11));
 console.log(coinChange([2], 3));
