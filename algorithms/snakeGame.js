@@ -64,3 +64,51 @@ Complexity Analysis:
 
 r: number of rows in the board
 c: number of columns in the board */
+
+ board1 = [['+', '+', '+', '0', '+', '0', '0'],
+           ['0', '0', '0', '0', '0', '0', '0'],
+           ['0', '0', '0', '0', '+', '0', '0'],
+           ['+', '+', '+', '0', '0', '+', '0'],
+           ['0', '0', '0', '0', '0', '0', '0']]
+
+// ans: { rows: [ 1, 4 ], columns: [ 3, 6 ] }
+
+const snakeGame = (board) => {
+  let rows = [];
+  let columns = [];
+    const findRow = (boardRow, index) => {
+        for(let i =0; i < boardRow.length; i++){
+            if(boardRow[i] !== "0"){
+              return;
+            };
+        };
+        rows.push(index);
+    };
+
+    const findColumn = (board) => {
+      for(var i = 0; i < board[0].length; i ++){
+        let isPassable = true;
+        for(var j = 0; j < board.length; j ++){
+          console.log(i,j);
+          if(board[j][i] !== "0"){
+            isPassable = false;
+            break;
+          }
+        }
+        if (isPassable) {
+          columns.push(i);
+        }
+      }
+      return columns;
+    }
+
+    board.forEach((eachRow, index) => {
+      findRow(eachRow, index);
+    })
+
+    findColumn(board);
+
+    return {rows, columns};
+};
+
+console.log(snakeGame(board1));
