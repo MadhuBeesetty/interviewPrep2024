@@ -23,15 +23,12 @@ const majorityElement = (nums) => {
     let mostRepeatValue = Math.max(...Object.values(obj))
 
     let mostRepeatKey;
-    console.log(Object.keys(obj), "keys");
     Object.keys(obj).forEach((element) => {
         if(obj[element] === mostRepeatValue){
-            console.log(element, obj[element]);
             mostRepeatKey = element;
             return;
         }
     })
-    console.log(mostRepeatKey, "keys");
     return mostRepeatKey;
 };
 
