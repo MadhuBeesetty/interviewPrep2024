@@ -22,12 +22,25 @@
 // Output: false
 
 const isHappy = (num) => {
+  let set = new Set();
+    const calculatesSquares = (n) => {
+      let arr = [];
+      let stringConversion = n.toString();
+      arr = [...stringConversion];
+      console.log(arr);
+      let sum = 0;
+      arr.forEach((eachNumber) => sum = sum + eachNumber);
+      if(set.has(sum)){
+        return false;
+      }else{
 
-  const calculatesSquares = (n) => {
-    n.toString().split('');
-    while(n > 0){
-      console.log(n);
+        set.add(sum);
+        calculatesSquares(Number(sum));
+      }
     }
-  }
 
-}
+    calculatesSquares(num);
+
+  };
+
+  console.log(isHappy(19));
