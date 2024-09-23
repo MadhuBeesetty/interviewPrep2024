@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #todo-container {
+            margin-top: 20px;
+        }
+
+        .todo-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+        }
+
+        #load-more-btn {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #load-more-btn:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+    <h3>Loaded Todos: <span id="total-loaded">0</span></h3>
+    
+    <div id="todo-container"></div>
+    
+    <button id="load-more-btn">Load More</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
