@@ -19,16 +19,18 @@ const insertLevelOrder = (arr, root = null, i = 0) => {
   return root;
 }
 
-let tree1 = insertLevelOrder([1,2,3]);
-let tree2 = insertLevelOrder([1,2,3]);
+let tree = insertLevelOrder([4,2,7,1,3,6,9]);
 
-const isSameTree = (p, q) => {
-  if(!p && !p) return true;
-  if(!p || !q) return false;
+const invertTree = (root) => {
+  if(!root) return null;
 
-  if(p.val !== q.val) return false;
+  const swap = root.right;
+  root.right = root.left;
+  root.left = swap;
 
-  return isSameTree(p.right, q.right) && isSameTree(p.left, q.left);
+  invertTree(root.right);
+  invertTree(root.left);
+  return root;
 };
 
-console.log(isSameTree(tree1, tree2));
+console.log(invertTree(tree));
