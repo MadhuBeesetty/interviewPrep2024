@@ -2,9 +2,9 @@
 
 given a list of iteams to be purchased at various stores, each store has various produce Departments
 
-list = ["milk", "coffe", "floar", "cheese", "apples", "bread" ];
+// list = ["milk", "coffe", "floar", "cheese", "apples", "bread" ];
 
-produce = [["eggs" : "food"], ["cake" : "bakery"], ["milk" : "diary"], ["cheese" : "diary"], ["apples" : "fruits"], ["floar" : "groceries"], ["coffee" : "groceries"], ["carrots" : "vegitables"], ["strawberries" : "fruits"],]
+// produce = [["eggs" : "food"], ["cake" : "bakery"], ["milk" : "diary"], ["cheese" : "diary"], ["apples" : "fruits"], ["floar" : "groceries"], ["coffee" : "groceries"], ["carrots" : "vegitables"], ["strawberries" : "fruits"],]
 
 loop through the list and if the iteams are in different procude category consider that as a different trip,
  now considering the list to have 6 iteams we ned to do six trips, write an algorithm to categorize all similar
