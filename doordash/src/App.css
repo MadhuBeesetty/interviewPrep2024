@@ -1,0 +1,40 @@
+body,
+html {
+  font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Lucida Grande";
+  background: white;
+  padding: 1rem;
+  line-height: 1.6;
+}
+.categoryHeader {
+  font: small-caps bold 24px/1 sans-serif;
+}
+.productImage {
+  width: 80px;
+  height: 80px;
+}
+.inlineItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+.productCard {
+  border: 1px solid;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+}
+.strikeThrough {
+  text-decoration: line-through;
+}
+.customButton {
+  margin-left: 15px;
+  background-color: #0095ff;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  box-shadow: rgba(255, 255, 255, 0.4) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1.15385;
+  padding: 8px 0.8em;
+}
