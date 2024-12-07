@@ -21,5 +21,5 @@ class TreeNode {
 };
 
 const A = new TreeNode();
-let binaryTree = TreeNode.buildTree([1,2,3,4,5,6,7,8]);
+let binaryTree = A.buildTree([1,2,3,4,5,6,7,8]);
 console.log(binaryTree);
