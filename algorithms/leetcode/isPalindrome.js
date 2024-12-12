@@ -21,32 +21,31 @@
 
 const isPalindrome = (s) => {
 
-if(s.length <= 1) return true;
+  if (s.length <= 1) return true;
 
-  function isLetter(char) {
-    const charCode = char.charCodeAt(0);
-    if(charCode >=65 && charCode <=90){
-      return char.toLowerCase();
-    } else if ((charCode >= 97 && charCode <= 122) || (charCode >= 48 && charCode <= 57)) {
-      return char;
-    } else {
-      return "invalid";
-    }
+  const isLetter = (char) => {
+      const charCode = char.charCodeAt(0);
+      if (charCode >= 65 && charCode <= 90) {
+          return char.toLowerCase();
+      } else if ((charCode >= 97 && charCode <= 122) || (charCode >= 48 && charCode <= 57)) {
+          return char;
+      } else {
+          return "invalid";
+      }
   }
 
-  for(var i = 0, j = s.length -1; i <= j;){
-    if(isLetter(s[i]) === "invalid"){
+  for (var i = 0, j = s.length - 1; i <= j;) {
+      if (isLetter(s[i]) === "invalid") {
+          i++;
+          continue;
+      };
+      if (isLetter(s[j]) === "invalid") {
+          j--;
+          continue;
+      };
+      if (isLetter(s[i]) !== isLetter(s[j])) return false;
       i++;
-      continue;
-    };
-    if(isLetter(s[j]) === "invalid"){
       j--;
-      continue;
-    };
-    console.log(isLetter(s[i]), isLetter(s[j]), i, j);
-    if(isLetter(s[i]) !== isLetter(s[j])) return false;
-    i++;
-    j--;
   }
   return true;
 }

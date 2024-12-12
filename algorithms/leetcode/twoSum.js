@@ -8,7 +8,7 @@
 
 // You can return the answer in any order.
 
- 
+
 
 // Example 1:
 
@@ -23,6 +23,23 @@
 
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
+
+
+// two sum best output with o(n) time complexity
+const twoSum = function(nums, target) {
+  let map1 = new Map();
+  let output = [];
+  for(var i = 0; i < nums.length; i++){
+      let diff = target - nums[i];
+      if(map1.has(diff)){
+          output.push(map1.get(diff));
+          output.push(i);
+          return output;
+      }else{
+          map1.set(nums[i], i);
+      }
+  }
+};
 
 const twoSum = (nums, target) => {
   let output = [];
@@ -55,4 +72,3 @@ const twoSum = (nums, target, i = 0, j = 1, output = []) => {
 console.log(
   twoSum([9991, 9992, 9993, 9994, 9995, 9996, 9997, 9998, 9999, 10000], 19999)
 );
-
