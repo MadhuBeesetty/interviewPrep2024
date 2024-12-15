@@ -1,6 +1,6 @@
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
- 
+
 
 // Example 1:
 
@@ -29,3 +29,17 @@ const containsDuplicate = (nums) => {
 };
 
 console.log(containsDuplicate([1, 2, 3, 1]));
+
+// updated solution using maps
+
+const containsDuplicate = (nums) => {
+  let containMap = new Map();
+  for (var i = 0; i < nums.length; i++) {
+      if (containMap.has(nums[i])) {
+          return true;
+      } else {
+          containMap.set(nums[i], nums[i]);
+      }
+  }
+  return false;
+};
