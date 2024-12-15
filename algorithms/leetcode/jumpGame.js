@@ -17,16 +17,23 @@
 // which makes it impossible to reach the last index.
 
 const canJump = (nums, currentPosition = 0) => {
-  console.log(currentPosition, "this is currentPosition");
-  if(currentPosition > (nums.length - 1) || nums[currentPosition] === 0){
-    return false;
-  };
-  currentPosition = currentPosition + nums[currentPosition];
-  if(nums[currentPosition] === nums.length - 1){
-      return true;
-  }else{
-      return canJump(nums, currentPosition);
+  if (currentPosition >= nums.length - 1) {
+    return true;
   }
+
+  if (nums[currentPosition] === 0) {
+    return false;
+  }
+
+  const maxJump = nums[currentPosition];
+  for (let jump = 1; jump <= maxJump; jump++) {
+    if (canJump(nums, currentPosition + jump)) {
+      return true;
+    }
+  }
+
+  return false;
 };
+
 
 console.log(canJump([3,2,1,0,4]));
