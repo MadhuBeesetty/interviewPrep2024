@@ -7,7 +7,7 @@ const todosLimit = 20;  // How many todos to fetch per request
 const maxTodos = 100;   // Maximum number of todos to load
 
 // Function to fetch todos
-async function fetchTodos(skip) {
+const fetchTodos = async (skip) => {
     const response = await fetch(`https://dummyjson.com/todos?limit=${todosLimit}&skip=${skip}`);
     const data = await response.json();
     return data.todos;
@@ -27,11 +27,11 @@ function renderTodos(todos) {
 async function loadMoreTodos() {
     const todos = await fetchTodos(todosLoaded);  // Fetch more todos
     renderTodos(todos);  // Render the fetched todos
-    
+
     // Update the count of loaded todos
     todosLoaded += todos.length;
     totalLoaded.innerText = todosLoaded;
-    
+
     // If we have loaded 100 todos, hide the Load More button
     if (todosLoaded >= maxTodos) {
         loadMoreBtn.style.display = 'none';
