@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState,useEffect, useMemo } from "react";
+import { dataApi } from "../api";
+
 //When you load app, call the api  -https://dog.ceo/api/breeds/list/all endpoint and get the repsonse
 // dog breeds with sub breeds list
 // render dog breed names -> Pagination
@@ -6,59 +8,46 @@ import { useState, useEffect } from "react";
 //clicking on back goes to list of breeds
 //
 const Application = () => {
-  // const response = {
-  //   "message": {
-  //     "affenpinscher": [],
-  //     "african": [],
-  //     "airedale": [],
-  //     "akita": [],
-  //     "appenzeller": [],
-  //     "australian": [
-  //       "kelpie",
-  //       "shepherd"
-  //     ],
-  //   }
-  // };
-//  const imageUrl = "https://images.dog.ceo/breeds/african/n02116738_5953.jpg"
-// https://dog.ceo/api/breed//african/images/random
-// https://dog.ceo/api/breed/african/images/random
- const [ breed , setBreed] = useState(""); //dogbree dis dynamic so keep it in state
- const [ imageUrl, setImageUrl] = useState("");
- const [breedData, updateBreedData] = useState({})
 
- const fetchData = async () => {
-  const response = await fetch(`https://dog.ceo/api/breeds/list/all`);
-  const data = await response?.json();
-  console.log("all Data ",data )
-  updateBreedData(data)
-}
- useEffect(() => {
-  console.log("i am here use effect" ) // when component renders, useEffect triggeres  based on dependencies ( it could be any state)
-  fetchData();
- }, [])
-  console.log("keys", breedData);
-  const keys = breedData.message ? Object.keys(breedData.message): [];
-  console.log("keys", breedData);
-  const handleClick = async (dogBreed) =>{
-    setBreed(dogBreed);
-    console.log("dogBreed", breed);
-    const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
-    const data = await response.json();
-    setImageUrl(data.message)
-  }
+  const [marketData, setMarketData] = useState([]);
+
+  const data = useMemo(() => dataApi(), []);
+
+  useEffect(() => {
+    data.then((value) => {
+      setMarketData(value);
+    })
+  }, []);
+
+console.log(marketData, "this is market data");
+
   return (
     <div className="App">
     <h1>List of dog Breeds</h1>
-    <div>
-    {keys.map((item, index)=>{
-      //  console.log("item", item, index);
-       return (item && <div
-       key={index}
-       onClick={() => handleClick(item)} //handleClick(item) is saved in onClick
-       >{item}</div>  // we could have simple ( ) if we dont have to return
-    )})}
-    </div>
-    <img src={imageUrl} alt="Girl in a jacket" width="500" height="600"/>
+    <section>
+      <h1>We are building a new grocery store feed page, and want your help with it.</h1>
+
+      <p>We will be using an API called getStoreFeed, that will give us all the items we need to show on the grocery store page. </p>
+
+      <p>The response is an array of item objects, you can look at the response in response.js</p>
+
+      <p>You need to create the feed page, which will have distinct sections for each category with all items that are marked with that category. </p>
+
+      <p>You need to display the title of the item, show the image of the item, the price of the item in $ and if the item has a discount, the original price should have a strikethrough and should show the discounted price beside it. Check out the mockup for illustration.</p>
+
+      <p>We have provided the CSS for the header sections and the individual item cards. You need to use them.</p>
+      <img width='500' src={'/mockup.png'} alt='Feature design'/>
+    </section>
+    <>
+    <p>madhu new project description</p>
+    {marketData.map((data) => (
+      <>
+      <img className="app-image" alt={data.title} src={data.imageUrl} />
+      <h1>{data.title}</h1>
+      <p>{data.description}</p>
+      </>
+    ))}
+    </>
     </div>
   );
 }
