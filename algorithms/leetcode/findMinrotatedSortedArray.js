@@ -1,3 +1,4 @@
+// question 153
 
 // Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
 
@@ -9,7 +10,7 @@
 
 // You must write an algorithm that runs in O(log n) time.
 
- 
+
 
 // Example 1:
 
@@ -25,7 +26,7 @@
 
 // Input: nums = [11,13,15,17]
 // Output: 11
-// Explanation: The original array was [11,13,15,17] and it was rotated 4 times. 
+// Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
 
 const findMin = (nums) => {
   for (var i = 0; i < nums.length; i++) {
@@ -39,3 +40,16 @@ const findMin = (nums) => {
 };
 
 console.log(findMin([3, 4, 5, 1, 2]));
+
+///// solution 2
+
+const findMin = (nums) => {
+  let min = nums[0];
+  for(var i = 0; i< nums.length; i++){
+      if(nums[i] < min){
+          min = nums[i];
+          return min;
+      }
+  }
+  return min;
+};
