@@ -2,29 +2,28 @@
 
 // Example 1:
 
-// Input: 
-// n = 10 
+// Input:
+// n = 10
 // ["call","call","call"]
 // Output: [10,11,12]
-// Explanation: 
+// Explanation:
 // counter() = 10 // The first time counter() is called, it returns n.
 // counter() = 11 // Returns 1 more than the previous time.
 // counter() = 12 // Returns 1 more than the previous time.
 // Example 2:
 
-// Input: 
+// Input:
 // n = -2
 // ["call","call","call","call","call"]
 // Output: [-2,-1,0,1,2]
 // Explanation: counter() initially returns -2. Then increases after each sebsequent call.
 
 const createCounter = (n) => {
-    let calls = 0;
-    return () => { 
-        let returnVal = n + calls;
-        calls = calls + 1; 
-        return returnVal;
-    };
+   let calls = 0;
+   return () => {
+    calls = calls+1;
+    return n + calls;
+   }
 };
 
 // calls is out the the inner fuction being returned.
@@ -33,9 +32,9 @@ const createCounter = (n) => {
 const counter = createCounter(10)
 
 // counter literally looks like this
-// () => { 
+// () => {
 //     let returnVal = n + calls;
-//     calls = calls + 1; 
+//     calls = calls + 1;
 //     return returnVal;
 // }; but still it has access to calls which is completely outside this function.
 

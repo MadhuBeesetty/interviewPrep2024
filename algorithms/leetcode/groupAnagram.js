@@ -32,33 +32,21 @@
 // strs[i] consists of lowercase English letters.
 
 const groupAnagrams = (strs) => {
-  let output = [];
-  const isAnagram = (str1, str2) => {
-      if (str1.split('').sort().join('') === str2.split('').sort().join('')) {
-          return true;
+  const group = new Map();
+
+  for (var i = 0; i < strs.length; i++) {
+      let isAnagram = strs[i].split("").sort().join();
+      if (!group.get(isAnagram)) {
+          let ana = [];
+          ana.push(strs[i]);
+          group.set(isAnagram, ana);
       } else {
-          return false;
+        let ana = group.get(isAnagram);
+        ana.push(strs[i]);
+          group.set(isAnagram, ana);
       }
   }
-
-  let newSubArr = [];
-  for (var i = 1; i <= strs.length; i++) {
-      if (i === strs.length) {
-          newSubArr.push(strs[0]);
-          strs.splice(0, 1);
-          output.push(newSubArr);
-          newSubArr = [];
-          i = 0;
-      } else {
-          if (isAnagram(strs[0], strs[i]) === true) {
-              newSubArr.push(strs[i]);
-              strs.splice(i, 1);
-              i = i - 1;
-          };
-      }
-  }
-
-  return output;
+  return Array.from(group.values());
 };
 
 console.log(groupAnagrams(["eat","tea","tan","ate","nat","bat"]));
