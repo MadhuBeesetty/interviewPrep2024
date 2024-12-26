@@ -116,15 +116,140 @@ printAllData (){
 
 };
 
-const LLlearning = new Linkedlist();
-LLlearning.insertFirst(5);
-LLlearning.insertFirst(6);
-LLlearning.insertLast(7);
-LLlearning.insertAtIndex(1,1);
-LLlearning.insertAtIndex(1,2);
-LLlearning.insertAtIndex(1,3);
-console.log(LLlearning);
-LLlearning.removeAtIndex(1);
-console.log(LLlearning);
-LLlearning.printAllData();
-LLlearning.getAtIndex(4);
+// const LLlearning = new Linkedlist();
+// LLlearning.insertFirst(5);
+// LLlearning.insertFirst(6);
+// LLlearning.insertLast(7);
+// LLlearning.insertAtIndex(1,1);
+// LLlearning.insertAtIndex(1,2);
+// LLlearning.insertAtIndex(1,3);
+// console.log(LLlearning);
+// LLlearning.removeAtIndex(1);
+// console.log(LLlearning);
+// LLlearning.printAllData();
+// LLlearning.getAtIndex(4);
+
+/////////////////////////////////
+// practice again
+
+class NodePrac {
+  constructor(value, next = null){
+    this.value = value;
+    this.next = next;
+  }
+};
+
+class Linkedlist1 {
+  constructor(){
+    this.head = null;
+    this.size = 0;
+  }
+
+  insertFirst (value) {
+      this.head = new NodePrac(value);
+      this.size++;
+  }
+
+  insertLast(value) {
+    const newNode = new NodePrac(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+    this.size++;
+  }
+
+  insertAtIndex (value, index){
+    if (index < 0 || index > this.size) {
+      console.error("Index out of bounds");
+      return;
+  }
+    let currentPosition = 0;
+    let current = this.head;
+    let previous;
+    while(current.next){
+      previous = current;
+      current = current.next;
+      currentPosition = currentPosition + 1;
+      if(currentPosition === index){
+        previous.next = new NodePrac(value, current);
+      this.size++;
+      return;
+      };
+    };
+  }
+
+  getAtIndex (index){
+    let currentPosition = 0;
+    let current = this.head;
+    if(currentPosition === index){
+      return current.value;
+    };
+    let previous;
+    while(current.next){
+      previous = current;
+      currentPosition = currentPosition + 1;
+      current = previous.next;
+      if(currentPosition === index){
+        return current.value;
+      }
+    }
+  };
+
+  getAllNodeValues () {
+    let current;
+    if(this.size > 0){
+      current = this.head;
+    };
+    let previous;
+    while(current !== null){
+      console.log(current.value, "this is current value");
+      previous = current;
+      current = current.next;
+    }
+  }
+
+  removeAtIndex(index) {
+    if (index < 0 || index > this.size) {
+      console.error("Index out of bounds");
+      return;
+  }
+  let current = this.head;
+  let currentPosition = 0;
+  let previous = null;
+  while(current.next){
+    if(currentPosition === index){
+      if(index === 0){
+        this.head = current.next;
+        current.next = null;
+        this.size--;
+        return;
+      }
+      previous.next = current.next;
+      this.size--;
+      return;
+    };
+    previous = current;
+    current = current.next;
+    currentPosition++;
+  }
+  }
+}
+
+const a = new Linkedlist1();
+a.insertFirst(5);
+a.insertLast(6);
+a.insertLast(7);
+a.insertAtIndex(1,2);
+a.insertLast(8);
+a.getAllNodeValues();
+a.removeAtIndex(2);
+console.log(a);
+a.getAllNodeValues();
+a.removeAtIndex(0);
+console.log(a);
