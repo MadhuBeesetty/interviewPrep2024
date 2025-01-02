@@ -22,22 +22,19 @@
 // Output: false
 
 const wordBreak = (s, wordDict) => {
-  const wordSet = new Set(wordDict);
-  console.log(wordSet, "this is word set");
-  const dp = Array(s.length + 1).fill(false);
-  console.log(dp, "this is dp");
+  let wordReference = new Set(wordDict);
+  let dp = Array(s.length + 1).fill(false);
   dp[0] = true;
-
-  for (let i = 1; i <= s.length; i++) {
-    for (let j = 0; j < i; j++) {
-      if (dp[j] && wordSet.has(s.substring(j, i))) {
-        dp[i] = true;
-        console.log(dp, "inside dp");
-        break; // No need to check further
-      }
+  for(var i = 1; i <= s.length; i++){
+    for(var j = 0; j < i; j++){
+      console.log(i,j, s.substring(j,i));
+      if(dp[j] && wordReference.has(s.substring(j,i))){
+          dp[i] = true;
+          break;
+      };
     }
   }
-
+  console.log(dp, "this is output");
   return dp[s.length];
 };
 
