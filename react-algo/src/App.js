@@ -2,7 +2,7 @@ import Post from './components/post';
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
       <Post />
     </div>
   );

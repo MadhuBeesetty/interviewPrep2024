@@ -1,14 +1,13 @@
+import SingleCommnet from "./singleComment"
 
-import SingleCommnet from "./singleComment";
-
-
-
-const Comments = (commentsData) => {
+const Comments = (data) => {
+  const {commentsData} = data;
   console.log(commentsData, "comments data");
   return (
     <div className="App">
-      {commentsData.data.map((eachCommentData) => (
-        <SingleCommnet key={eachCommentData.id} eachCommentData={eachCommentData}/>
+      {commentsData.map((eachCommentData) => (
+        eachCommentData.replies ? (<Comments commentsData={eachCommentData.replies}/>) :
+        (<SingleCommnet key={eachCommentData.id} eachCommentData={eachCommentData}/>)
       ))}
     </div>
   );

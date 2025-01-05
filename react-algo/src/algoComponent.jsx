@@ -15,7 +15,7 @@ const Algo = () => {
 console.log(logTree(value.root));
   console.log(JSON.stringify(value, null, 5));
   return (
-    <div className="App">
+    <div >
         <p>
         this is whatever {value}
         </p>

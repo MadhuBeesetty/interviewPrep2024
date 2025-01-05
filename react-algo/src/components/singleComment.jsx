@@ -11,11 +11,13 @@ const SingleCommnet = (singleComment) => {
 
 console.log(singleComment, "this is single comment");
 
+  const {eachCommentData} = singleComment;
+
   return (
-    <div id={singleComment.eachCommentData.id}>
-      <h3>{singleComment.eachCommentData.author}</h3>
-      <p>{singleComment.eachCommentData.timestamp}</p>
-      <p>{singleComment.eachCommentData.content}</p>
+    <div id={eachCommentData.id}>
+      <h3>{eachCommentData.author}</h3>
+      <p>{eachCommentData.timestamp}</p>
+      <p>{eachCommentData.content}</p>
     </div>
   );
 }

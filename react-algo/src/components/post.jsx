@@ -3,9 +3,9 @@ import {commentsData} from "../data";
 
 const Post = () => {
   return (
-    <div className="App">
+    <div>
       i am the main post and i have multiple replies
-      <Comments data={commentsData} />
+      <Comments commentsData={commentsData} />
     </div>
   );
 }
