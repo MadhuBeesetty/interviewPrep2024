@@ -74,15 +74,21 @@ class BinaryTree {
   maxDepthDFS(current = this.root, depth = 0) {
     if(!current) return depth;
     return Math.max(
-      this.maxDepthDFS(current.left, depth + 1),
-      this.maxDepthDFS(current.right, depth + 1)
+      this.maxDepth(current.left, depth + 1),
+      this.maxDepth(current.right, depth + 1)
   );
   }
 
   maxDepthBFS(current = this.root, depth = 0) {
+    let queue = [];
     if(!current) return depth;
     let innerLength = 0;
-    let queue = [current];
+    if(current.left){
+      queue.push(current.left);
+    };
+    if(current.right){
+      queue.push(current.right);
+    };
 
     while(queue.length > 0){
       innerLength = queue.length;
@@ -98,24 +104,6 @@ class BinaryTree {
       depth++;
     }
     return depth;
-  }
-
-  // in a BinaryTree min node is the left most node of the tree.
-  minNode(current= this.root){
-    if(!current) return null;
-    while(current.left){
-      current = current.left;
-    };
-    return current.value;
-  }
-
-  // in a binary tree right most node is the maxNode.
-  maxNode(current= this.root){
-    if(!current) return null;
-    while(current.right){
-      current = current.right;
-    };
-    return current.value;
   }
 
 }
@@ -134,7 +122,6 @@ A.insert(9);
 // A.postOrder();
 // A.inOrder();
 A.search(this.root, 10);
-// console.log(A.maxDepthDFS(this.root));
-// console.log(A.maxDepthBFS(this.root));
-console.log(A.minNode());
-console.log(A.maxNode());
+console.log(A.maxDepthDFS(this.root));
+console.log(A.maxDepthBFS(this.root));
+export default A;
