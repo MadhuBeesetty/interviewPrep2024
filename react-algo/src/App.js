@@ -1,9 +1,9 @@
-import Algo from "./algoComponent";
+import Post from './components/post';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Algo />
+      <Post />
     </div>
   );
 }

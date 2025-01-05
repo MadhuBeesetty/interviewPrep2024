@@ -54,7 +54,6 @@ class BinaryTree {
   }
 }
 
-
 const A = new BinaryTree;
 const constructedTree = A.buildTree([1,2,3])
 const b = A.inser(5);
