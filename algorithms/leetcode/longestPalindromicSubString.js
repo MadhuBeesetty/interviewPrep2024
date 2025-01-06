@@ -13,25 +13,30 @@
 // Output: "bb"
 
 const longestPalindrome = (s) => {
-  let longest = "";
+  let maxLength = 0;
+  let start;
 
-  const palindromeCheck = (left, right) => {
-    while (left >= 0 && right < s.length && s[left] === s[right]) {
-      if (right - left + 1 > longest.length) {
-        longest = s.slice(left, right + 1);
-      }
+  const palindromeCheck = (left,right) => {
+    while(left > 0 && right < s.length && s[left] === s[right]){
       left--;
       right++;
-    }
-  };
-
-  for (let i = 0; i < s.length; i++) {
-    palindromeCheck(i, i);
-
-    palindromeCheck(i, i + 1);
+    };
+    return right - left -1;
   }
 
-  return longest;
+  for(var i = 0; i<s.length; i++){
+    let pal1 = palindromeCheck(i,i);
+    let pal2 = palindromeCheck(i,i+1);
+    console.log(pal1,pal2);
+    longest = Math.max(pal1,pal2);
+
+    if (longest > maxLength) {
+      maxLength = longest;
+      start = i - Math.floor((longest - 1) / 2);
+    }
+  }
+
+  return s.substring(start, start + maxLength);
 };
 
 console.log(longestPalindrome("babad")); // Output: "bab" or "aba"
