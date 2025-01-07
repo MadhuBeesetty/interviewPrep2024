@@ -5,16 +5,16 @@
 // if you do that then you will end up with 100's of API call in one single scroll.
 
 const throttle = (callBackFun, limit) => {
-  let lastCall = 0; // Tracks the last time the function was executed
+let lastCall = 0;
 
-  return (value) => {
-    const now = Date.now(); // Current timestamp
-
-    if (now - lastCall >= limit) {
-      lastCall = now; // Update the last call timestamp
-      callBackFun(value); // Execute the function
+    return (apiendpoint) => {
+      let now = Date.now()
+      console.log(now, lastCall, limit);
+      if((now - lastCall) >= limit){
+        lastCall = now;
+        callBackFun(apiendpoint);
+      }
     }
-  };
 };
 
 const apiFetch = async (query) => {
