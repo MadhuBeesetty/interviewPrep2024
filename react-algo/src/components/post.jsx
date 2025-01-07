@@ -1,11 +1,22 @@
 import Comments from "./comments";
-import {commentsData} from "../data";
+import AddComment from './AddComment';
+import {CommentsData} from "../api";
+import { useState, useEffect } from "react";
 
 const Post = () => {
+
+const [comments, updateComments] = useState([])
+
+useEffect(() => {
+  const data = CommentsData();
+  data.then((value) => updateComments([...value]));
+}, [])
+
   return (
     <div>
       i am the main post and i have multiple replies
-      <Comments commentsData={commentsData} />
+      <AddComment />
+      <Comments commentsData={comments} />
     </div>
   );
 }
