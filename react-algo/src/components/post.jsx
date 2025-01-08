@@ -1,15 +1,21 @@
 import Comments from "./comments";
 import AddComment from './AddComment';
 import {CommentsData} from "../api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback
+
+ } from "react";
 
 const Post = () => {
 
 const [comments, updateComments] = useState([])
 
-useEffect(() => {
+const getData = useCallback(() => {
   const data = CommentsData();
   data.then((value) => updateComments([...value]));
+}, [])
+
+useEffect(() => {
+  getData();
 }, [])
 
   return (

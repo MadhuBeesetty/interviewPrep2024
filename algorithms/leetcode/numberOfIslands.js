@@ -53,7 +53,7 @@ const numIslands = (inputArray) => {
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-        if (inputArray[i][j] === "1" && !tracker[i][j]) {
+        if (inputArray[i][j] === "1" && !referenceArray[i][j]) {
             islandCount++;
             dfs(i, j);
         }
@@ -74,7 +74,7 @@ const inputArray1 = [
   ["1","1","1","1","0"],
   ["1","1","0","1","0"],
   ["1","1","0","0","0"],
-  ["0","0","0","0","0"]
+  ["0","0","1","0","1"]
 ]
 
-console.log(numIslands(inputArray)); // Output: 3
+console.log(numIslands(inputArray1)); // Output: 3

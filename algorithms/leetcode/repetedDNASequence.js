@@ -18,17 +18,18 @@
 // Output: ["AAAAAAAAAA"]
 
 const findRepeatedDnaSequences = (s) => {
-  const seen = new Set();
-  const repeated = new Set();
+  const set = new Set();
+  const repeatedSet = new Set();
 
-  for (let i = 0; i <= s.length - 10; i++) {
-    const substring = s.substring(i, i + 10);
-
-    if (seen.has(substring)) {
-      repeated.add(substring);
-    } else {
-      seen.add(substring);
+  for(var i = 0; i < s.length - 10; i++ ){
+    if(set.has(s.substring(i, i+10))){
+      console.log(repeatedSet.has(s.substring(i, i+10)), "inside");
+      repeatedSet.add(s.substring(i, i+10));
+    }else{
+      set.add(s.substring(i, i+10));
     }
   }
-  return Array.from(repeated);
+  return Array.from(repeatedSet);
 };
+
+console.log(findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"));
