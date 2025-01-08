@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 const AddComment = () => {
 
 const [comments, updateComments] = useState("")
 
 console.log(comments, "this is use state");
-const updateInput = (e) => {
+const updateInput = useCallback ((e) => {
+  console.log("i am use callback");
   updateComments(e.target.value);
-}
+}, []);
 
   return (
     <>
