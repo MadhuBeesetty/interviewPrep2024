@@ -42,3 +42,5 @@ const removeDuplicates = (s, k) => {
   }
   return arr.map(([char, count]) => char.repeat(count)).join("");
 };
+
+console.log()
