@@ -1,6 +1,6 @@
 import { useState,useEffect, useMemo } from "react";
 import { dataApi } from "../api";
-
+import AppPrac from './AppPrac';
 //When you load app, call the api  -https://dog.ceo/api/breeds/list/all endpoint and get the repsonse
 // dog breeds with sub breeds list
 // render dog breed names -> Pagination
@@ -24,6 +24,7 @@ console.log(marketData, "this is market data");
   return (
     <div className="App">
     <h1>List of dog Breeds</h1>
+    <AppPrac />
     <section>
       <h1>We are building a new grocery store feed page, and want your help with it.</h1>
 
