@@ -1,15 +1,15 @@
 
 // A closure in JavaScript is when a function remembers its lexical scope, even when the function is executed
-// outside that scope. In simpler terms, a closure allows an inner function to access variables from an outer 
+// outside that scope. In simpler terms, a closure allows an inner function to access variables from an outer
 // function, even after the outer function has finished executing.
 
 function outer() {
     let outerVar = "I'm outside!";
-    
+
     function inner() {
         console.log(outerVar); // Accessing outer function's variable
     }
-    
+
     return inner;
 }
 

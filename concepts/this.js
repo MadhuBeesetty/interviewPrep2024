@@ -7,7 +7,7 @@ const person = {
   }
 };
 
-person.greet(); // Output: Hello, my name is Alice
+// person.greet(); // Output: Hello, my name is Alice
 
 // in the above example person is the Object and the this keyword is refering to person object and it is looking for name.
 
@@ -20,7 +20,7 @@ function Person(name) {
 const person1 = new Person('Bob');
 // in the above line you are passing name to the the function as a variable and we are assiging that by using this keyword.
 
-console.log(person1.name); // Output: Bob
+// console.log(person1.name); // Output: Bob
 
 
 // ************************************** //
@@ -33,4 +33,19 @@ function greet() {
   console.log('Hello, my name is ' + this.name);
 }
 
-greet.call(person2); // Output: Hello, my name is Alice2
+// greet.call(person2); // Output: Hello, my name is Alice2
+
+const objOld = {
+  "a": 1,
+  "b": 2,
+  "c": function () { return console.log(this.a + this.b) }
+}
+
+const obj = {
+  "a": 1,
+  "b": 2,
+  "c": () => console.log(obj["a"] + obj["b"])
+}
+
+objOld["c"]();
+obj["c"]();
