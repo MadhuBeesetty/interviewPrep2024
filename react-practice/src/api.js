@@ -1,9 +1,18 @@
 import {dummyData} from './response';
 
-export const dataApi = () => {
-  return new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(dummyData);
-  }, 1000);
-})
+const responseData = async () => {
+  try{
+    const results = await new Promise((resolve, reject) => {
+      if(dummyData){
+          resolve(dummyData);
+      }else{
+        reject("no data found");
+      }
+    });
+    return results;
+  }catch(error){
+        throw new Error("error fetching data");
+  }
 };
+
+export default responseData;
