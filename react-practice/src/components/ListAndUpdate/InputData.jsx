@@ -10,7 +10,8 @@ const updateData = (e) => {
 const updateToParent = () => {
   updateInputDataCallBack(inputData);
   console.log("button is clicked");
-}
+};
+
 console.log(inputData);
   return(
     <div>

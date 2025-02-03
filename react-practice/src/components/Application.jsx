@@ -29,9 +29,9 @@ const Application = () => {
 console.log(data, "this is data");
   return (
     <div>
-    <>
-    <MainComponent />
-    </>
+      <>
+        <MainComponent />
+      </>
     <div>
       {data && data.map((eachIteam, key) => (
         <ItemLayout>
