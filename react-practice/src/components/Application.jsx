@@ -3,6 +3,7 @@ import responseData from "../api";
 import ImageComponent from "./ImageComponent";
 import styled from 'styled-components';
 import MainComponent from "./ListAndUpdate/MainComponent";
+import Board from "../components/board";
 
 const ItemLayout = styled.div`
   padding-left: 25px;
@@ -31,6 +32,7 @@ console.log(data, "this is data");
     <div>
       <>
         <MainComponent />
+        <Board />
       </>
     <div>
       {data && data.map((eachIteam, key) => (
